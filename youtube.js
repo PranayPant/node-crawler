@@ -1,6 +1,7 @@
 const youtube 		= require('youtube-dl');
 const fs 			= require('fs');
 const DEBUG 		= require('./config.js').getDEBUG();
+const {getQueryLinks} 	= require('./crawler.js');
 
 const WHITESPACE 	= " ";
 const DELIMITER 	= "+";
@@ -10,18 +11,26 @@ const SEARCH_SUFFIX = "results?search_query=";
 // Exports
 
 function download(url, file) {
-	var video = youtube(url);
-	video
-		.on('info', log)
-		.pipe(fs.createWriteStream(file))
-		.on('close', completedDownload);
+	return new Promise((resolve, reject) => {
+		var video = youtube(url);
+		video
+			.on('info', log)
+			.pipe(fs.createWriteStream(file))
+			.on('close', (resolve) => completedDownload);
+		
+		//resolve(true);
+	});
+	
+}
+
+function search(query) {
+	var links = getQueryLinks(generateUrl(query));
+	if(DEBUG) {
+		console.log(links);
+	}
 }
 
 // Helpers
-
-function getVideo(searchUrl) {
-	
-}
 
 function generateUrl(query) {
 	return BASE_URL + SEARCH_SUFFIX + query.split(WHITESPACE).join(DELIMITER);
@@ -35,10 +44,12 @@ function log(info) {
 	}
 }
 
-function completedDownload() {
+function completedDownload(resolve) {
 	if (DEBUG) {
 		console.log("Finished downloading file!");
+		resolve(true);
 	}
 }
 
 module.exports.download = download;
+module.exports.search 	= search;
