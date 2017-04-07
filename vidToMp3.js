@@ -1,45 +1,41 @@
 const ffmpeg 	= require('ffmpeg');
 const DEBUG 	= require('./config.js').getDEBUG();
 
-function convert(movie, audio){
-	return new Promise((resolve, reject) => {
+function convert(movie, audio) {
+	
+	var promise = new Promise( (resolve, reject) => {
 		
-		try {
-			var process = new ffmpeg(movie);
-			process.then(function (video) {
-				
-				video.fnExtractSoundToMP3(audio, function (error, file) {
-					if (error) {
-						if(DEBUG){
-							console.error("Problem extracting audio!");
-							console.error(error);
-						}
+		var process = new ffmpeg(movie);
+		
+		process.then(function (video) {
+			
+			video.fnExtractSoundToMP3(audio, function (error, file) {
+				if (error) {
+					if(DEBUG){
+						console.error("Problem extracting audio!");
+						console.error(error);
 					}
-					else {
-						if (DEBUG) {
-							console.log("Sound extracted!");
-							resolve(true);
-						}
+					reject(false);
+				}
+				else {
+					if (DEBUG) {
+						console.log("Sound extracted!");
 					}
-				});
-			}, 
-			function (err) {
-				if(DEBUG) {
-					console.log("Problem processing video!");
-					console.log(err);
+					resolve(true);
 				}
 			});
-		} 
-		catch (e) {
-			if (DEBUG) {
-				console.log(e.code);
-				console.log(e.msg);
+		})
+		.catch(function (error) {
+			if(DEBUG) {
+				console.error("Problem processing sound!");
+				console.error(error);
 			}
-
-		}
+			reject(false);
+		});
 
 	});
-		
+
+	return promise;
 }
 
 module.exports.convert = convert;

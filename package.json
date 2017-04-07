@@ -10,10 +10,12 @@
   "author": "Pranay Pant",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.17.1",
     "cheerio": "^0.22.0",
     "express": "^4.15.2",
     "ffmpeg": "0.0.4",
     "nightmare": "^2.10.0",
+    "pug": "^2.0.0-beta11",
     "request": "^2.81.0",
     "request-debug": "^0.2.0",
     "youtube-dl": "^1.11.1"
