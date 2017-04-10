@@ -1,0 +1,12 @@
+extends partials/layouts/main.pug
+block results	
+	div.frames
+		ul
+		each link, i in queryLinks
+			if link
+				li
+					div.content
+						img.imgs(src=imgLinks[i])
+						a.links(href=link) #{titles[i]}
+
+	include partials/links/nav.pug

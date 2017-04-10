@@ -17,7 +17,7 @@ app.set('views', path.join(__dirname, "views"));
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.get("/", function(req, res) {
-	res.render("index");
+	res.render("search");
 });
 
 app.post("/submit", function(req, res){
@@ -26,9 +26,13 @@ app.post("/submit", function(req, res){
 	searchPromise
 		.then(function(data){
 			if(DEBUG) {
-				console.log("Data is " + JSON.stringify(data));
+				console.log("Data is ---");
+				for (var key in data) {
+					console.log("Num keys: " + key + "- " + data[key].length)
+				}
+				console.log("---");
 			}
-			res.send(JSON.stringify(data));
+			res.render("results", data);
 		})
 		.catch(function(err){
 			if(DEBUG){
