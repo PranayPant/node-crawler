@@ -1,12 +1,18 @@
-extends partials/layouts/main.pug
+extends partials/layouts/results.pug
 block results	
-	div.frames
+	div.content
 		ul
-		each link, i in queryLinks
-			if link
-				li
-					div.content
-						img.imgs(src=imgLinks[i])
-						a.links(href=link) #{titles[i]}
-
-	include partials/links/nav.pug
+			each link, i in queryLinks
+				if link
+					li
+						div.list-content
+							div.view( embed-url=embedLinks[i] onclick='load_iframe(this)' )
+								img( src=imgLinks[i] )
+								img.play-button( src="youtube-play-button-48.png" )
+							div.link
+								a( href=link ) #{titles[i]}
+							div.download_buttons
+								div.vid
+									button( type='button' onclick='dwnld(this)' link=queryLinks[i] ) Download mp4 video
+								div.mp3
+									button( type='button' onclick='dwnld(this)' link=queryLinks[i] mp3=true ) Download mp3 soundtrack

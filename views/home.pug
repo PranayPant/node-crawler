@@ -1,0 +1,6 @@
+extends partials/layouts/main.pug
+block home
+	div.home
+		form.searchBar(method="post" action="/submit")
+			input.query(type='text' name="query" placeholder='Search...')
+			input.submit(type='submit')

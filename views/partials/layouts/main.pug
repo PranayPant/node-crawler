@@ -1,8 +1,12 @@
+
 doctype html
 html
 	head(title="Web Crawler")
-	style
-		include ../../../assets/stylesheets/main.css
+		script(src="https://code.jquery.com/jquery-3.2.1.min.js")
+		script(type="text/javascript")
+			include ../../../dist/bundle.js
+		style
+			include ../../../assets/css/main.css
 	body
-		block search
-		block results
+		block home
+		block content

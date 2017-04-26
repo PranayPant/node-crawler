@@ -1,0 +1,51 @@
+
+/* Home Page */
+
+.home {
+	position: fixed;
+	bottom: 50%;
+	left: 35%;
+
+}
+.home .query {
+	width: 400px;
+}
+
+/* Header */
+
+.search {
+	position: fixed;
+	top: 10%;
+	right: 10%;
+}
+
+/* Footer */
+
+.nav {
+	position: fixed;
+	bottom: 10%;
+	right: 10%;
+}
+
+/* Main page content */
+
+.list-content {
+	position: relative;
+	display: flex;
+}
+.list-content .link, .download_buttons {
+	padding-left: 5%;
+	padding-top: 4%;
+}
+
+/* View content (img, iframe) */
+
+.view {
+	width: 450px;
+}
+
+.play-button {
+	position: absolute;
+	top: 50%;
+	right: 83%;
+}
