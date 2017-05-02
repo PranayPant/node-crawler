@@ -5,7 +5,8 @@
   "main": "webcrawlers/index.js",
   "scripts": {
     "bundle": "webpack --config webpack.config.js",
-    "prestart": "npm run bundle"
+    "prestart": "npm run bundle",
+    "start": "node server.js"
   },
   "author": "Pranay Pant",
   "license": "ISC",
@@ -16,7 +17,7 @@
     "ffmpeg": "0.0.4",
     "pug": "^2.0.0-beta11",
     "request": "^2.81.0",
-    "youtube-dl": "^1.11.1"
+    "ytdl-core": "^0.13.1"
   },
   "devDependencies": {
     "babel": "^6.23.0",

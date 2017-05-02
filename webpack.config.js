@@ -23,10 +23,7 @@ module.exports = {
 			},
 		}),
 		new webpack.HotModuleReplacementPlugin(),
-		new webpack.NoEmitOnErrorsPlugin(),
-		//new HtmlWebpackPlugin({
-		//	template: './views/results.pug'
-		//})
+		new webpack.NoEmitOnErrorsPlugin()
 	],
 	module: {
 		rules: [

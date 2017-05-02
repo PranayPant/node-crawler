@@ -9,7 +9,16 @@ window.load_iframe = function(elem) {
 	iframe.setAttribute( "src", src );
 
 	$(elem).html("");
-	$(elem).append(iframe);
+	$(elem).html($(iframe).prop('outerHTML'));
+}
+
+function sleep(milliseconds) {
+	var start = new Date().getTime();
+	for (var i = 0; i < 1e7; i++) {
+		if ((new Date().getTime() - start) > milliseconds){
+			break;
+		}
+	}
 }
 
 module.exports 	= load_iframe;

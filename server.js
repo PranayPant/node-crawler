@@ -10,7 +10,8 @@ const webpackHotMiddleware 				= require("webpack-hot-middleware");
 
 const {getDEBUG}								= require("./lib/config.js");
 const {printJSON}						 		= require("./lib/util.js");
-const {search}									= require("./lib/youtube.js");
+const {search, download}					= require("./lib/youtube.js");
+const {convert}								= require("./lib/vidToMp3.js");
 const webpackConfig 							= require("./webpack.config.js");
 const DEBUG 									= getDEBUG();
 
@@ -74,8 +75,19 @@ app.post("/submit", function(req, res){
 		});
 });
 
-app.get("/submit", function(req, res) {
-	res.send("success!");
+app.get("/xhr", function(req, res) {
+	
+	var option = ( req.headers.is_mp3 === '0' ) ? false : true;
+	
+	download(req.headers.link, option)
+		.then((readStream)=>{
+				res.set('Content-Type', 'video/mp4');
+				readStream.pipe(res);				
+		})
+		.catch((err)=>{
+			console.error("Error retrieving video stream!");
+			console.error(err);
+		});
 });
 
 

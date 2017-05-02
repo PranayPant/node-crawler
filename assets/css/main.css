@@ -1,4 +1,9 @@
 
+/* Flash Message */
+.flash-message{
+	position: fixed;
+}
+
 /* Home Page */
 
 .home {
@@ -14,9 +19,9 @@
 /* Header */
 
 .search {
-	position: fixed;
+	position: relative;
 	top: 10%;
-	right: 10%;
+	left: 80%;
 }
 
 /* Footer */
@@ -46,6 +51,6 @@
 
 .play-button {
 	position: absolute;
-	top: 50%;
-	right: 83%;
+	top: 40%;
+	right: 90%;
 }
