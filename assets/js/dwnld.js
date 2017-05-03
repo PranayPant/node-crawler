@@ -18,6 +18,7 @@ window.dwnld = function(elem) {
 	fetch(request)
 		.then(function(res){
 			//flash_show(elem);
+			alert("Please wait while we process your video for download...");
 			return res.blob();
 		})
 		.then(function(blob){
