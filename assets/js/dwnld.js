@@ -36,7 +36,7 @@ window.dwnld = function(elem) {
 				document.body.appendChild(elem);
 				elem.click();        
 				document.body.removeChild(elem);
-				flash_hide();
+				//flash_hide();
 			}
 		})
 		.catch(function(err){
@@ -45,7 +45,8 @@ window.dwnld = function(elem) {
 }
 
 function flash_show(elem) {
-	$(elem).parent().parent().parent().prepend("<div class='flash-message'><p> One second while we process your video for download... </p></div>");
+	//$(elem).parent().parent().parent().prepend("<div class='flash-message'><p> One second while we process your video for download... </p></div>");
+	alert("One second while we process your video for download...");
 }
 
 function flash_hide(){

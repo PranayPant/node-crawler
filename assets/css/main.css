@@ -6,14 +6,27 @@
 
 /* Home Page */
 
+.title{
+	position: fixed;
+	top: 10%;
+	left: 40%;
+	font-size: 60px;
+	font-family: Arial;
+}
+
 .home {
 	position: fixed;
 	bottom: 50%;
-	left: 35%;
+	left: 20%;
+	height: 50px;
 
 }
 .home .query {
-	width: 400px;
+	width: 1000px;
+	height: 30px;
+}
+.home .submit {
+	height: 36px;
 }
 
 /* Header */
