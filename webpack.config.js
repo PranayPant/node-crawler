@@ -5,7 +5,7 @@ module.exports = {
 	devtool: 'source-map',
 	//context: path.join(__dirname, 'assets', 'js'),
 	entry: [
-		'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
+		//'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
 		'./assets/js/main.js',
 		'./assets/css/main.css'
 	],
