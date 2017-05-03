@@ -4,7 +4,7 @@
   "description": "webcrawl your way to awesomeness!!!",
   "main": "webcrawlers/index.js",
   "scripts": {
-    "bundle": "webpack -p --config webpack.prod.js ",
+    "bundle": "./node_modules/.bin/webpack -p --config webpack.prod.js",
     "prestart": "npm run bundle",
     "start": "node server.js"
   },

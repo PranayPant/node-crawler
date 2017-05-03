@@ -11,8 +11,7 @@ const webpackHotMiddleware 				= require("webpack-hot-middleware");
 const {getDEBUG}								= require("./lib/config.js");
 const {printJSON}						 		= require("./lib/util.js");
 const {search, download}					= require("./lib/youtube.js");
-const {convert}								= require("./lib/vidToMp3.js");
-const webpackConfig 							= require("./webpack.config.js");
+const webpackConfig 							= require("./webpack.prod.js");
 const DEBUG 									= getDEBUG();
 
 

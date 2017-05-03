@@ -17,7 +17,7 @@ window.dwnld = function(elem) {
 
 	fetch(request)
 		.then(function(res){
-			flash_show(elem);
+			//flash_show(elem);
 			return res.blob();
 		})
 		.then(function(blob){
@@ -42,15 +42,6 @@ window.dwnld = function(elem) {
 		.catch(function(err){
 			console.error("Error! " + err);
 		});
-}
-
-function flash_show(elem) {
-	//$(elem).parent().parent().parent().prepend("<div class='flash-message'><p> One second while we process your video for download... </p></div>");
-	alert("One second while we process your video for download...");
-}
-
-function flash_hide(){
-	$('.flash-message').remove();
 }
 
 module.exports 	= dwnld;
