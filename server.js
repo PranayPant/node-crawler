@@ -1,12 +1,34 @@
 require('./lib/config.js').setDEBUG((process.argv[2]) ? true : false);
+const env = process.env.NODE_ENV;
+
+// Development env configure
+
+if (env === 'development'){
+	const webpackDevMiddleware 				= require("webpack-dev-middleware");
+	const webpackHotMiddleware 				= require("webpack-hot-middleware");
+
+	app.use(webpackDevMiddleware(compiler, {
+		hot: true,
+		filename: 'bundle.js',
+		publicPath: webpackConfig.output.publicPath,
+		stats: {
+			colors: true,
+		},
+		historyApiFallback: true,
+	}));
+
+	app.use(webpackHotMiddleware(compiler, {
+		log: console.log,
+		path: '/__webpack_hmr',
+		heartbeat: 10 * 1000,
+	}));
+}
 
 const path 										= require('path');
 const express 									= require('express');
 const bodyParser 								= require("body-parser");
 const app 										= express();
 const webpack 									= require('webpack');
-const webpackDevMiddleware 				= require("webpack-dev-middleware");
-const webpackHotMiddleware 				= require("webpack-hot-middleware");
 
 const {getDEBUG}								= require("./lib/config.js");
 const {printJSON}						 		= require("./lib/util.js");
@@ -32,21 +54,6 @@ app.set('views', path.join(__dirname, "views"));
 app.use(express.static(path.resolve(path.join(__dirname, '/dist'))));
 app.use(express.static(path.resolve(path.join(__dirname, '/assets/img'))));
 app.use(bodyParser.urlencoded({extended: false}));
-
-app.use(webpackDevMiddleware(compiler, {
-	hot: true,
-	filename: 'bundle.js',
-	publicPath: webpackConfig.output.publicPath,
-	stats: {
-		colors: true,
-	},
-	historyApiFallback: true,
-})); 
-app.use(webpackHotMiddleware(compiler, {
-	log: console.log,
-	path: '/__webpack_hmr',
-	heartbeat: 10 * 1000,
-}));
 
 
 // Routes
