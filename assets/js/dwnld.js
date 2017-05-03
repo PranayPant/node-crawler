@@ -5,7 +5,7 @@ window.dwnld = function(elem) {
 	var title 	= $(elem).attr('title');
 	var is_mp3 	= $(elem).attr('mp3');
 	
-	var url 		 = "https://young-wave-24420.herokuapp.com/xhr";
+	var url 		 = "https://keeptube.herokuapp.com/xhr";
 	var headers  = new Headers();
 	headers.append("link", link);
 	headers.append("is_mp3", is_mp3);
