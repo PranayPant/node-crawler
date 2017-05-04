@@ -2,9 +2,10 @@ require('./lib/config.js').setDEBUG((process.argv[2]) ? true : false);
 
 const path 										= require('path');
 const express 									= require('express');
+const bodyParser 								= require("body-parser");
 
 const app 										= express();
-const {getDEBUG, configure}				= require("./lib/config.js");
+const {getDEBUG, configureDev}			= require("./lib/config.js");
 const {printJSON}						 		= require("./lib/util.js");
 const {search, download}					= require("./lib/youtube.js");
 const DEBUG 									= getDEBUG();
@@ -19,7 +20,14 @@ console.log("Listening on port " + PORT);
 
 // Configure middleware
 
-configure(app, express);
+configureDev(app, express);
+
+app.set('view engine', 'pug');
+app.set('views', path.resolve( path.join(__dirname, "views") ));
+
+app.use(express.static( path.resolve( path.join(__dirname, 'dist') ) ));
+app.use(express.static( path.resolve( path.join(__dirname, 'assets/img') ) ));
+app.use(bodyParser.urlencoded({extended: false}));
 
 // Routes
 
