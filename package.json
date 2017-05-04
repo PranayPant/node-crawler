@@ -4,8 +4,9 @@
   "description": "webcrawl your way to awesomeness!!!",
   "main": "webcrawlers/index.js",
   "scripts": {
-    "bundle": "./node_modules/.bin/webpack -p --config webpack.prod.js",
-    "prestart": "npm run bundle",
+    "bundle:prod": "webpack -p --config webpack.prod.js",
+    "bundle:dev": "webpack --config webpack.dev.js",
+    "prestart": "if-env NODE_ENV=production && npm run bundle:prod || npm run bundle:dev",
     "start": "node server.js"
   },
   "author": "Pranay Pant",
@@ -13,14 +14,15 @@
   "dependencies": {
     "body-parser": "^1.17.1",
     "cheerio": "^0.22.0",
+    "css-loader": "^0.28.0",
     "express": "^4.15.2",
     "ffmpeg": "0.0.4",
+    "if-env": "^1.0.0",
     "pug": "^2.0.0-beta11",
     "request": "^2.81.0",
-    "ytdl-core": "^0.13.1",
     "style-loader": "^0.16.1",
-    "css-loader": "^0.28.0",
-    "webpack": "^2.4.1"
+    "webpack": "^2.4.1",
+    "ytdl-core": "^0.13.1"
   },
   "devDependencies": {
     "babel": "^6.23.0",

@@ -1,19 +1,20 @@
 
 window.dwnld = function(elem) {
 	
-	var link 	= $(elem).attr('link');
-	var title 	= $(elem).attr('title');
-	var is_mp3 	= $(elem).attr('mp3');
+	const cbURL 	= window.location.origin + "/xhr";
+	const link 		= $(elem).attr('link');
+	const title 	= $(elem).attr('title');
+	const is_mp3 	= $(elem).attr('mp3');
 	
-	var url 		 = "https://keeptube.herokuapp.com/xhr";
 	var headers  = new Headers();
 	headers.append("link", link);
 	headers.append("is_mp3", is_mp3);
-	var options = 	{	
+	
+	const options = 	{	
 							method: 'GET', 
 							headers: headers 
 						};
-	var request = new Request(url, options);
+	const request = new Request(cbURL, options);
 
 	fetch(request)
 		.then(function(res){
