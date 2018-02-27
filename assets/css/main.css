@@ -6,27 +6,39 @@
 
 /* Home Page */
 
-.title{
-	position: fixed;
-	top: 10%;
-	left: 40%;
-	font-size: 60px;
-	font-family: Arial;
-}
-
 .home {
-	position: fixed;
-	bottom: 50%;
-	left: 20%;
-	height: 50px;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	width: 100vw;
+	height: 100vh;
+}
 
+.home-content {
+	position: relative;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-evenly;
+	width: 50%;
 }
-.home .query {
-	width: 1000px;
+
+.title {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+}
+
+.title-content {
+	font-size: 72px;
+}
+
+.searchBar {
+	display: flex;
+}
+
+.query {
+	flex-basis: 100%;
 	height: 30px;
-}
-.home .submit {
-	height: 36px;
 }
 
 /* Header */
@@ -50,20 +62,56 @@
 .list-content {
 	position: relative;
 	display: flex;
+	flex-flow: row nowrap;
+	justify-content: flex-start;
 }
-.list-content .link, .download_buttons {
-	padding-left: 5%;
-	padding-top: 4%;
+.items {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-between;
+}
+.item {
+	margin: 10px;
+}
+
+.info {
+	margin-left: 10px;
+}
+
+.info, .download_buttons {
+	position: relative;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-between;
+}
+
+.link a {
+	overflow-wrap: break-word;
 }
 
 /* View content (img, iframe) */
 
 .view {
-	width: 450px;
+	display: flex;
+	position:relative;
+	width: 300px;
+}
+
+.thumbnail {
+	flex-basis: 100%;
 }
 
 .play-button {
 	position: absolute;
-	top: 40%;
-	right: 90%;
+	top: 50%;
+	right: 50%;
+}
+
+.video-time {
+	position: absolute;
+	font-size: 15px;
+	color: white;
+	background-color: black;
+	bottom: 5%;
+	right: 5%;
 }

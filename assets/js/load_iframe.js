@@ -4,6 +4,7 @@ window.load_iframe = function(elem) {
 	var src = $(elem).attr('embed-url');
 
 	var iframe = document.createElement("iframe");
+	iframe.setAttribute( "width", "246" );
 	iframe.setAttribute( "frameborder", "0" );
 	iframe.setAttribute( "allowfullscreen", "" );
 	iframe.setAttribute( "src", src );

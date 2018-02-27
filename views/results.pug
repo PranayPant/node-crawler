@@ -1,15 +1,16 @@
 extends partials/layouts/results.pug
 block results	
 	div.content
-		ul
+		ul.items
 			each link, i in queryLinks
 				if link
-					li
-						div.wrapper
-							div.list-content
-								div.view( embed-url=embedLinks[i] onclick='load_iframe(this)' width=300 )
-									img( src=imgLinks[i] width=300 )
-									img.play-button( src="youtube-play-button-48.png" )
+					li.item
+						div.list-content
+							div.view( embed-url=embedLinks[i] onclick='load_iframe(this)' )
+								img.thumbnail( src=imgLinks[i] )
+								img.play-button( src="youtube-play-button-48.png" )
+								span.video-time #{times[i]}
+							div.info
 								div.link
 									a( href=link ) #{titles[i]}
 								div.download_buttons
