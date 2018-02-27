@@ -47,6 +47,8 @@
 	position: relative;
 	top: 10%;
 	left: 80%;
+	width: 300px;
+	height: 30px;
 }
 
 /* Footer */
@@ -69,13 +71,14 @@
 	display: flex;
 	flex-flow: column nowrap;
 	justify-content: space-between;
+	margin-left: 25%;
 }
 .item {
 	margin: 10px;
 }
 
 .info {
-	margin-left: 10px;
+	margin-left: 15px;
 }
 
 .info, .download_buttons {
@@ -87,6 +90,9 @@
 
 .link a {
 	overflow-wrap: break-word;
+	text-decoration: none;
+	font-family: "Arial";
+	color: black; 
 }
 
 /* View content (img, iframe) */
@@ -110,6 +116,8 @@
 .video-time {
 	position: absolute;
 	font-size: 15px;
+	font-family: 'Arial';
+	font-weight: bold;
 	color: white;
 	background-color: black;
 	bottom: 5%;

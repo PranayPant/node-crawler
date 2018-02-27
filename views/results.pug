@@ -1,10 +1,10 @@
 extends partials/layouts/results.pug
 block results	
 	div.content
-		ul.items
+		div.items
 			each link, i in queryLinks
 				if link
-					li.item
+					div.item
 						div.list-content
 							div.view( embed-url=embedLinks[i] onclick='load_iframe(this)' )
 								img.thumbnail( src=imgLinks[i] )
@@ -15,6 +15,6 @@ block results
 									a( href=link ) #{titles[i]}
 								div.download_buttons
 									div.vid
-										button( type='button' onclick='dwnld(this)' link=link title=titles[i] mp3='0' ) Download mp4 video
+										button( type='button' onclick='dwnld(this)' link=link title=titles[i] mp3='0' ) Download mp4
 									div.mp3
-										button( type='button' onclick='dwnld(this)' link=link title=titles[i] mp3='1' ) Download mp3 soundtrack
+										button( type='button' onclick='dwnld(this)' link=link title=titles[i] mp3='1' ) Download mp3
