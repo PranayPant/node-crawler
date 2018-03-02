@@ -1,4 +1,25 @@
 
+/* Body */
+body {
+	display: flex;
+	justify-content: center;
+}
+
+/* Search Bar */
+
+.searchBar {
+	display: flex;
+	flex-flow: row nowrap;
+}
+
+.query {
+	flex-basis: auto;
+}
+
+.submit {
+	flex-basis: auto;
+}
+
 /* Flash Message */
 .flash-message{
 	position: fixed;
@@ -10,15 +31,15 @@
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: center;
-	width: 100vw;
-	height: 100vh;
+	width: 97vw;
+	height: 97vh;
 }
 
 .home-content {
 	position: relative;
 	display: flex;
 	flex-flow: column nowrap;
-	justify-content: space-evenly;
+	justify-content: flex-start;
 	width: 50%;
 }
 
@@ -26,29 +47,32 @@
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: center;
+	margin-top: 20%;
+	margin-bottom: 20%;
 }
 
 .title-content {
 	font-size: 72px;
 }
 
-.searchBar {
+.home-search {
 	display: flex;
+	height: 40px;
 }
 
-.query {
-	flex-basis: 100%;
-	height: 30px;
+.home-search .query {
+	flex-grow: 2;
 }
 
 /* Header */
 
 .search {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: flex-end;
 	position: relative;
-	top: 10%;
-	left: 80%;
-	width: 300px;
-	height: 30px;
+	width: 100%;
+	height: 10%;
 }
 
 /* Footer */
@@ -57,9 +81,16 @@
 	position: fixed;
 	bottom: 10%;
 	right: 10%;
+	font-family: 'Arial';
+	text-decoration: none;
 }
 
 /* Main page content */
+
+.results {
+	position: relative;
+	display: flex;
+}
 
 .list-content {
 	position: relative;
@@ -75,6 +106,7 @@
 }
 .item {
 	margin: 10px;
+	flex-grow: 1;
 }
 
 .info {
@@ -97,6 +129,13 @@
 
 /* View content (img, iframe) */
 
+.content {
+	display: flex;
+	flex-flow: column nowrap;
+	width: 97vw;
+	height: 97vh;
+}
+
 .view {
 	display: flex;
 	position:relative;
@@ -105,6 +144,7 @@
 
 .thumbnail {
 	flex-basis: 100%;
+	height: 100%;
 }
 
 .play-button {
@@ -122,4 +162,22 @@
 	background-color: black;
 	bottom: 5%;
 	right: 5%;
+}
+
+.playlist {
+	position: absolute;
+	width: 30%;
+	height: 100%;
+	top: 0%;
+	right: 0%;
+	background-color: hsla(0, 0%, 6.7%, .8);
+	color: hsla(0, 0%, 100%, .8);
+}
+
+.playlist-content {
+	position: relative;
+	left: 45%;
+	top: 45%;
+	font-family: 'Arial';
+	font-weight: bold;
 }

@@ -1,6 +1,6 @@
 extends partials/layouts/results.pug
 block results	
-	div.content
+	div.results
 		div.items
 			each link, i in queryLinks
 				if link
@@ -9,7 +9,10 @@ block results
 							div.view( embed-url=embedLinks[i] onclick='load_iframe(this)' )
 								img.thumbnail( src=imgLinks[i] )
 								img.play-button( src="youtube-play-button-48.png" )
-								span.video-time #{times[i]}
+								span.video-time #{times[i]} 
+								if (isPlaylist[i])
+									div.playlist
+										span.playlist-content #{playlistSizes[i]}
 							div.info
 								div.link
 									a( href=link ) #{titles[i]}

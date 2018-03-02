@@ -4,6 +4,6 @@ block home
 		div.home-content
 			h1.title 
 				span.title-content KeepTube
-			form.searchBar(method="post" action="/submit")
+			form.home-search.searchBar(method="post" action="/submit")
 				input.query(type='text' name="query" placeholder='Search...')
 				input.submit(type='submit' value='Search')
