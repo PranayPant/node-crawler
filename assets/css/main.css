@@ -150,7 +150,7 @@ body {
 .play-button {
 	position: absolute;
 	top: 50%;
-	right: 50%;
+	left: 50%;
 }
 
 .video-time {
