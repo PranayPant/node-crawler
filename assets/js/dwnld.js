@@ -46,13 +46,16 @@ window.dwnld = function(elem) {
 
 window.flash_start = function() {
 	var div = document.createElement("div");
+	var p = document.createElement('p');
 	div.setAttribute('id', 'flash-message');
-	div.textContent = "Preparing your content...";
+	p.setAttribute('id', 'flash-p');
+	p.textContent = "Preparing your content...";
+	div.appendChild(p);
 	document.body.appendChild(div);
 }
 
 window.flash_complete = function() {
-	document.getElementById("flash-message").textContent = "Your download has started!";
+	document.getElementById("flash-p").textContent = "Your download has started!";
 	setTimeout( hide_flash, 5000 );
 }
 
