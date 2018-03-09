@@ -2,6 +2,7 @@
 /* Body */
 body {
 	display: flex;
+	flex-flow: column-reverse;
 	justify-content: center;
 }
 

@@ -56,13 +56,15 @@ app.post("/submit", function(req, res){
 });
 
 app.get("/xhr", function(req, res) {
-	console.log('in xhr');
+
 	var option = ( req.headers.is_mp3 === '0' ) ? false : true;
 	
 	download(req.headers.link, option)
 		.then( (readStream)=> {
-			console.log('reading')
-			readStream.pipe(res);				
+			readStream.once( 'data', (data) => {
+				console.log('Received data of size ' + data.length)
+				res.end(data)
+			});
 		})
 		.catch( (err)=> {
 			console.error("Error retrieving video stream!");
