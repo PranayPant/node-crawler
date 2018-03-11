@@ -18,6 +18,11 @@ window.dwnld = function(elem) {
 
 	fetch(request)
 		.then(function(res){
+			console.log(res)
+			if ( res.status === 404 ) {
+				throw new Error('Video unavailable');		
+			}
+			
 			flash_start();
 			return res.blob();
 		})
@@ -40,27 +45,48 @@ window.dwnld = function(elem) {
 			}
 		})
 		.catch(function(err){
-			console.error("Error! " + err);
+			console.error(err);
+			flash_error(err.message)
 		});
 }
 
 window.flash_start = function() {
-	var div = document.createElement("div");
-	var p = document.createElement('p');
-	div.setAttribute('id', 'flash-message');
-	p.setAttribute('id', 'flash-p');
-	p.textContent = "Preparing your content...";
-	div.appendChild(p);
-	document.body.appendChild(div);
+
+	flash_create('Preparing your content...')
+}
+
+window.flash_error = function( message ) {
+
+	flash_create( message, '#993300' )
+	setTimeout( hide_flash, 3000 )
 }
 
 window.flash_complete = function() {
 	document.getElementById("flash-p").textContent = "Your download has started!";
-	setTimeout( hide_flash, 5000 );
+	setTimeout( hide_flash, 3000 );
 }
 
 window.hide_flash = function() {
-	document.getElementById("flash-message").style = "display:none";
+	var flash = document.getElementById("flash-wrapper");
+	document.body.removeChild(flash);
+}
+
+window.flash_create = function( text, color ) {
+
+	var wrapper = document.createElement('div');
+	var div = document.createElement("div");
+	var p = document.createElement('p');
+	
+	wrapper.setAttribute('id', 'flash-wrapper');
+	div.setAttribute('id', 'flash-message');
+	p.setAttribute('id', 'flash-p');
+	p.textContent = text;
+	if( color ) div.setAttribute( 'style', 'background-color:' + color)
+
+	div.appendChild(p);
+	wrapper.appendChild(div);
+
+	document.body.appendChild(wrapper);
 }
 
 module.exports = dwnld;

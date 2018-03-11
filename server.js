@@ -61,10 +61,15 @@ app.get("/xhr", function(req, res) {
 	
 	download(req.headers.link, option)
 		.then( (readStream)=> {
-			readStream.once( 'data', (data) => {
-				console.log('Received data of size ' + data.length)
-				res.end(data)
-			});
+			readStream
+				.once( 'data', (data) => {
+					console.log('Received data of size ' + data.length)
+					res.end(data)
+				})
+				.once( 'error', (err) => {
+					res.status(404).end( err.message )
+				});
+
 		})
 		.catch( (err)=> {
 			console.error("Error retrieving video stream!");
